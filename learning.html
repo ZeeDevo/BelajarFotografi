@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Belajar - Aplikasi Belajar Fotografi</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .learning-video-box {
+            position: relative;
+            background: #000;
+            aspect-ratio: 16/9;
+            box-shadow: var(--shadow-md);
+        }
+        .learning-video-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+        .video-control-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--white);
+            font-size: 12px;
+            font-family: var(--font-inter);
+            z-index: 10;
+        }
+        .video-play-btn-large {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--white);
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+        .video-play-btn-large:hover {
+            background: var(--primary-gradient);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .nav-tabs-custom {
+            border-bottom: 2px solid rgba(124, 139, 161, 0.1);
+        }
+        .nav-tabs-custom .nav-link {
+            border: none;
+            color: var(--muted-text);
+            font-weight: 600;
+            font-size: 13px;
+            padding: 12px 16px;
+            position: relative;
+            background: transparent;
+        }
+        .nav-tabs-custom .nav-link.active {
+            color: var(--primary-color);
+            background: transparent;
+        }
+        .nav-tabs-custom .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+        }
+        .related-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 16px;
+            background-color: var(--white);
+            border: 1px solid rgba(124, 139, 161, 0.08);
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: all 0.2s ease;
+        }
+        .related-card:hover {
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary-light);
+        }
+        .related-thumb {
+            width: 70px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .lesson-nav-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 24px;
+            background-color: var(--white);
+            border-top: 1px solid rgba(108, 92, 231, 0.1);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulated Mobile Device -->
+    <div class="mobile-device">
+        <!-- Device Notch -->
+        <div class="device-notch"></div>
+        
+        <!-- Mock Status Bar -->
+        <div class="device-header dark">
+            <span>09:41</span>
+            <div>
+                <i class="bi bi-wifi mx-1"></i>
+                <i class="bi bi-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- Video Player Header -->
+        <div class="learning-video-box">
+            <a href="class-detail.html" class="back-btn-overlay" style="top: 10px; left: 10px; background-color: rgba(0,0,0,0.5); color: var(--white); width: 34px; height: 34px;">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            
+            <img src="assets/class_cover.png" alt="Video Player">
+            
+            <!-- Play Indicator overlay -->
+            <div class="video-play-btn-large" id="playBtnOverlay">
+                <i class="bi bi-play-fill"></i>
+            </div>
+
+            <!-- Custom Mock Controller Bar -->
+            <div class="video-control-bar">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-play-fill text-white fs-5" style="cursor: pointer;"></i>
+                    <span>04:12 / 12:00</span>
+                </div>
+                <!-- Seek bar slider mock -->
+                <div class="flex-grow-1 mx-3" style="height: 4px; background-color: rgba(255,255,255,0.3); border-radius: 2px; position: relative;">
+                    <div style="width: 35%; height: 100%; background: var(--primary-gradient); border-radius: 2px;"></div>
+                    <div style="position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--white); top: -3px; left: 35%;"></div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-volume-up text-white" style="cursor: pointer;"></i>
+                    <i class="bi bi-fullscreen text-white" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Viewport -->
+        <div class="app-content p-0" style="padding-bottom: 80px;">
+            <!-- Tabs Menu -->
+            <ul class="nav nav-tabs nav-tabs-custom justify-content-around bg-white px-2" id="learningTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc-pane" type="button" role="tab" aria-controls="desc-pane" aria-selected="true">Deskripsi</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-pane" type="button" role="tab" aria-controls="notes-pane" aria-selected="false">Catatan Saya</button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content p-4 anim-fade-in" id="learningTabContent">
+                <!-- Description Tab -->
+                <div class="tab-pane fade show active" id="desc-pane" role="tabpanel" aria-labelledby="desc-tab">
+                    <span class="badge badge-custom badge-purple mb-2">Materi 03</span>
+                    <h2 class="fw-bold mb-3" style="font-size: 18px; line-height: 1.4;">Setting ISO & Sensitivitas Cahaya</h2>
+                    <p class="text-muted-text font-inter" style="font-size: 13px; line-height: 1.6;">
+                        ISO adalah salah satu pilar utama dari Segitiga Exposure. ISO mengontrol seberapa sensitif sensor kamera Anda terhadap cahaya yang masuk. Semakin tinggi angka ISO, semakin sensitif sensor kamera, mempermudah pemotretan dalam kondisi gelap namun memicu resiko timbulnya noise (bintik-bintik pasir pada foto).
+                    </p>
+                    <hr class="border-secondary-subtle my-4">
+
+                    <!-- Related/Next Videos list -->
+                    <h5 class="fw-bold mb-3" style="font-size: 14px;">Materi Selanjutnya & Rekomendasi</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <a href="#" class="related-card">
+                            <img src="assets/onboarding_illustration.png" alt="Thumbnail" class="related-thumb bg-light-purple">
+                            <div>
+                                <h6 class="fw-bold m-0" style="font-size: 12px; line-height: 1.4;">04. Mengatur Shutter Speed yang Presisi</h6>
+                                <span class="text-muted-text font-inter" style="font-size: 10px;">Durasi: 14 Menit</span>
+                            </div>
+                        </a>
+                        <a href="#" class="related-card">
+                            <img src="assets/landscape_challenge_sample.png" alt="Thumbnail" class="related-thumb">
+                            <div>
+                                <h6 class="fw-bold m-0" style="font-size: 12px; line-height: 1.4;">05. Mengontrol Aperture & Memahami Depth of Field</h6>
+                                <span class="text-muted-text font-inter" style="font-size: 10px;">Durasi: 18 Menit</span>
+                            </div>
+                        </a>
+                        <a href="#" class="related-card">
+                            <img src="assets/class_cover.png" alt="Thumbnail" class="related-thumb">
+                            <div>
+                                <h6 class="fw-bold m-0" style="font-size: 12px; line-height: 1.4;">Bonus. Pengenalan Golden Ratio & Rule of Thirds</h6>
+                                <span class="text-muted-text font-inter" style="font-size: 10px;">Durasi: 20 Menit</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Notes Tab -->
+                <div class="tab-pane fade" id="notes-pane" role="tabpanel" aria-labelledby="notes-tab">
+                    <h5 class="fw-bold mb-2" style="font-size: 15px;">Catatan Pembelajaran</h5>
+                    <p class="text-muted-text font-inter mb-3" style="font-size: 12px;">Tulis catatan pentingmu disini. Catatan ini tersimpan secara lokal dan otomatis.</p>
+                    
+                    <div class="mb-3">
+                        <textarea class="form-control font-inter" id="learningNotes" rows="6" placeholder="Ketik catatanmu, misal: 'ISO tinggi = noise meningkat, gunakan ISO rendah jika cahaya melimpah...'" style="border-radius: 14px; border: 1.5px solid rgba(124, 139, 161, 0.2); font-size: 13px;"></textarea>
+                    </div>
+
+                    <!-- Custom notification toast mock -->
+                    <div class="alert alert-success d-none font-inter py-2 px-3 align-items-center mb-3" id="saveSuccessAlert" role="alert" style="border-radius: 10px; font-size: 12px;">
+                        <i class="bi bi-check-circle-fill me-2"></i> Catatan berhasil disimpan!
+                    </div>
+
+                    <button class="btn-gradient py-2 px-4" id="saveNotesBtn" style="font-size: 13px;">Simpan Catatan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Navigation Footer -->
+        <div class="lesson-nav-footer">
+            <button class="btn btn-outline-custom py-2 px-3" onclick="window.location.href='class-detail.html'" style="font-size: 13px; border-radius: 12px;">
+                <i class="bi bi-chevron-left me-1"></i> Sebelumnya
+            </button>
+            <button class="btn-gradient py-2 px-3" onclick="window.location.href='challenge.html'" style="font-size: 13px; border-radius: 12px;">
+                Selanjutnya <i class="bi bi-chevron-right ms-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple Note-taking Mock Interaction
+        const saveBtn = document.getElementById('saveNotesBtn');
+        const alertBox = document.getElementById('saveSuccessAlert');
+        const notesArea = document.getElementById('learningNotes');
+
+        // Load mock notes if any
+        notesArea.value = localStorage.getItem('photography_notes') || '';
+
+        saveBtn.addEventListener('click', () => {
+            localStorage.setItem('photography_notes', notesArea.value);
+            alertBox.classList.remove('d-none');
+            alertBox.classList.add('d-flex');
+            
+            setTimeout(() => {
+                alertBox.classList.add('d-none');
+                alertBox.classList.remove('d-flex');
+            }, 2500);
+        });
+
+        // Play button overlay hide animation mock
+        const playBtn = document.getElementById('playBtnOverlay');
+        playBtn.addEventListener('click', () => {
+            playBtn.style.opacity = '0';
+            setTimeout(() => {
+                playBtn.style.visibility = 'hidden';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

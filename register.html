@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - Aplikasi Belajar Fotografi</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .register-header-img {
+            height: 140px;
+            position: relative;
+            background: url('assets/class_cover.png') no-repeat center center;
+            background-size: cover;
+        }
+        .register-header-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(108, 92, 231, 0.15), #f6f8fc);
+        }
+        .register-card-wrapper {
+            margin-top: -30px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            background-color: var(--white);
+            padding: 24px 24px;
+            flex: 1;
+            box-shadow: 0 -10px 30px rgba(108, 92, 231, 0.05);
+        }
+        .back-nav-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--dark-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulated Mobile Device -->
+    <div class="mobile-device">
+        <!-- Device Notch -->
+        <div class="device-notch"></div>
+        
+        <!-- Mock Status Bar -->
+        <div class="device-header">
+            <span>09:41</span>
+            <div>
+                <i class="bi bi-wifi mx-1"></i>
+                <i class="bi bi-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- App Viewport -->
+        <div class="app-content p-0" style="padding-bottom: 0 !important;">
+            <!-- Header Banner -->
+            <div class="register-header-img">
+                <div class="register-header-overlay"></div>
+                <a href="login.html" class="back-nav-btn">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </div>
+
+            <!-- Register Form wrapper -->
+            <div class="register-card-wrapper d-flex flex-column justify-content-between anim-fade-in">
+                <div>
+                    <h2 class="fw-bold mb-1" style="font-size: 24px;">Daftar Akun</h2>
+                    <p class="text-muted-text font-inter mb-4" style="font-size: 13px;">
+                        Buat akun barumu dan mulai petualangan fotografimu sekarang!
+                    </p>
+
+                    <!-- Form -->
+                    <form id="registerForm" action="login.html" method="GET">
+                        <!-- Full Name Input -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="regName" placeholder="Mercy Marshanda" required value="Mercy Marshanda">
+                            <label for="regName"><i class="bi bi-person me-2"></i>Nama Lengkap</label>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="regEmail" placeholder="name@example.com" required value="mercy@marshanda.com">
+                            <label for="regEmail"><i class="bi bi-envelope me-2"></i>Email Address</label>
+                        </div>
+                        
+                        <!-- Password Input -->
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="regPassword" placeholder="Password" required value="password123">
+                            <label for="regPassword"><i class="bi bi-lock me-2"></i>Password</label>
+                        </div>
+
+                        <!-- Confirm Password Input -->
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="regConfirmPassword" placeholder="Confirm Password" required value="password123">
+                            <label for="regConfirmPassword"><i class="bi bi-shield-check me-2"></i>Konfirmasi Password</label>
+                        </div>
+
+                        <!-- Register Button -->
+                        <button type="submit" class="btn-gradient w-100 py-3 mb-3">
+                            Daftar Sekarang <i class="bi bi-person-plus ms-1"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Footer Link to Login -->
+                <div class="text-center font-inter mt-2" style="font-size: 13px;">
+                    <span class="text-muted-text">Sudah punya akun?</span>
+                    <a href="login.html" class="text-decoration-none ms-1" style="color: var(--primary-color); font-weight: 600;">Login Disini</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

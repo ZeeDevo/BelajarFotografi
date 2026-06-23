@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Aplikasi Belajar Fotografi</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-img-header {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            object-fit: cover;
+        }
+        .search-container {
+            position: relative;
+        }
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted-text);
+        }
+        .search-container input {
+            padding-left: 45px;
+            height: 50px;
+            border-radius: 14px;
+            border: 1.5px solid rgba(124, 139, 161, 0.15);
+            background-color: var(--white);
+            font-size: 14px;
+        }
+        .search-container input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+        }
+        .continue-card {
+            background: var(--primary-gradient);
+            border-radius: 24px;
+            color: var(--white);
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .continue-card::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            top: -40px;
+            right: -40px;
+        }
+        .continue-card .glass-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 16px;
+            backdrop-filter: blur(5px);
+            transition: all 0.2s ease;
+        }
+        .continue-card .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .stat-box {
+            background-color: var(--white);
+            border-radius: 18px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+        }
+        .stat-val {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 2px;
+        }
+        .stat-lbl {
+            font-size: 10px;
+            color: var(--muted-text);
+            font-family: var(--font-inter);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .category-quick {
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+        .category-quick:hover {
+            transform: scale(1.05);
+        }
+        .category-quick-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background-color: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px auto;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .category-quick:hover .category-quick-icon {
+            background: var(--primary-gradient);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulated Mobile Device -->
+    <div class="mobile-device">
+        <!-- Device Notch -->
+        <div class="device-notch"></div>
+        
+        <!-- Mock Status Bar -->
+        <div class="device-header">
+            <span>09:41</span>
+            <div>
+                <i class="bi bi-wifi mx-1"></i>
+                <i class="bi bi-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- App Viewport -->
+        <div class="app-content p-4 anim-fade-in">
+            <!-- Header Greeting -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <span class="text-muted-text font-inter" style="font-size: 13px;">Halo, Fotografer!</span>
+                    <h2 class="fw-bold m-0" style="font-size: 22px; letter-spacing: -0.5px;">Mercy Marshanda</h2>
+                </div>
+                <a href="profile.html">
+                    <img src="assets/mercy_profile.png" alt="Profile avatar" class="profile-img-header">
+                </a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container mb-4">
+                <i class="bi bi-search"></i>
+                <input type="text" class="form-control" placeholder="Cari kelas, teknik, kuis...">
+            </div>
+
+            <!-- Continue Learning Banner -->
+            <div class="continue-card mb-4">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <span class="badge bg-white text-primary fw-bold font-inter mb-2" style="font-size: 10px; color: var(--primary-color) !important;">LANJUTKAN BELAJAR</span>
+                        <h4 class="fw-bold text-white mb-2" style="font-size: 16px;">Segitiga Exposure Dasar</h4>
+                        <p class="text-white opacity-75 font-inter mb-3" style="font-size: 12px;">Materi: Aperture & Depth of Field</p>
+                        
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 6px; background-color: rgba(255,255,255,0.25);">
+                                <div class="progress-bar bg-white" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="font-inter fw-bold" style="font-size: 11px; color: rgba(255,255,255,0.9);">75%</span>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <button class="glass-btn" onclick="window.location.href='learning.html'">
+                            Mulai <i class="bi bi-play-fill ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Section -->
+            <h5 class="fw-bold mb-3" style="font-size: 16px;">Statistik Belajar</h5>
+            <div class="d-flex gap-3 mb-4">
+                <div class="stat-box">
+                    <div class="stat-val">12</div>
+                    <div class="stat-lbl">Kelas Selesai</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val">3</div>
+                    <div class="stat-lbl">Sertifikat</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val">92%</div>
+                    <div class="stat-lbl">Nilai Rata-rata</div>
+                </div>
+            </div>
+
+            <!-- Categories Quick Navigation -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold m-0" style="font-size: 16px;">Kategori Populer</h5>
+                <a href="categories.html" class="text-decoration-none font-inter fw-semibold" style="font-size: 12px; color: var(--primary-color);">Lihat Semua</a>
+            </div>
+            
+            <div class="row g-3 mb-4">
+                <div class="col-6">
+                    <a href="class-detail.html" class="category-quick d-block p-3 bg-white rounded-20 shadow-sm border border-0">
+                        <div class="category-quick-icon">
+                            <i class="bi bi-camera"></i>
+                        </div>
+                        <span class="text-dark-text font-poppins d-block">Fotografi Dasar</span>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="categories.html" class="category-quick d-block p-3 bg-white rounded-20 shadow-sm border border-0">
+                        <div class="category-quick-icon" style="background-color: rgba(225, 0, 255, 0.1); color: var(--accent-color);">
+                            <i class="bi bi-grid-3x3"></i>
+                        </div>
+                        <span class="text-dark-text font-poppins d-block">Komposisi</span>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="categories.html" class="category-quick d-block p-3 bg-white rounded-20 shadow-sm border border-0">
+                        <div class="category-quick-icon" style="background-color: rgba(253, 203, 110, 0.1); color: var(--warning-color);">
+                            <i class="bi bi-brightness-high"></i>
+                        </div>
+                        <span class="text-dark-text font-poppins d-block">Pencahayaan</span>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="categories.html" class="category-quick d-block p-3 bg-white rounded-20 shadow-sm border border-0">
+                        <div class="category-quick-icon" style="background-color: rgba(0, 184, 148, 0.1); color: var(--success-color);">
+                            <i class="bi bi-sliders"></i>
+                        </div>
+                        <span class="text-dark-text font-poppins d-block">Editing Foto</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Persistent Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="index.html" class="bottom-nav-item active">
+                <i class="bi bi-house-door-fill"></i>
+                <span>Home</span>
+            </a>
+            <a href="categories.html" class="bottom-nav-item">
+                <i class="bi bi-book"></i>
+                <span>Kelas</span>
+            </a>
+            <a href="challenge.html" class="bottom-nav-item">
+                <i class="bi bi-trophy"></i>
+                <span>Tantangan</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item">
+                <i class="bi bi-person"></i>
+                <span>Profil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

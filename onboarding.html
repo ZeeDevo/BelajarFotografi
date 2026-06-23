@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - Aplikasi Belajar Fotografi</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .onboarding-container {
+            background-color: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 24px;
+        }
+        .carousel-item {
+            text-align: center;
+        }
+        .illustration-container {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .illustration-img {
+            max-height: 250px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .carousel-indicators {
+            position: static;
+            margin-bottom: 30px;
+            gap: 8px;
+        }
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(108, 92, 231, 0.2);
+            border: none;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        .carousel-indicators .active {
+            width: 25px;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+        }
+        .slide-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+        }
+        .slide-desc {
+            font-size: 14px;
+            color: var(--muted-text);
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+        .action-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 50px;
+        }
+        .skip-btn {
+            color: var(--muted-text);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .skip-btn:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulated Mobile Device -->
+    <div class="mobile-device">
+        <!-- Device Notch -->
+        <div class="device-notch"></div>
+        
+        <!-- Mock Status Bar -->
+        <div class="device-header">
+            <span>09:41</span>
+            <div>
+                <i class="bi bi-wifi mx-1"></i>
+                <i class="bi bi-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- App Viewport -->
+        <div class="app-content p-0" style="padding-bottom: 0 !important;">
+            <div class="onboarding-container">
+                <!-- Skip button top aligned (visible on slides 1 & 2) -->
+                <div class="d-flex justify-content-end align-items-center" style="height: 30px;">
+                    <a href="login.html" id="skipLink" class="skip-btn">Skip</a>
+                </div>
+
+                <!-- Carousel Slider -->
+                <div id="onboardingCarousel" class="carousel slide" data-bs-ride="false" data-bs-wrap="false">
+                    <!-- Carousel Indicators (Dots) -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#onboardingCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#onboardingCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#onboardingCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="carousel-item active">
+                            <div class="illustration-container anim-float">
+                                <img src="assets/onboarding_illustration.png" alt="Belajar Dasar Fotografi" class="illustration-img">
+                            </div>
+                            <h2 class="slide-title">Pelajari Dasar Fotografi</h2>
+                            <p class="slide-desc">
+                                Mulai dari mengenal kamera, exposure triangle, hingga teknik pengambilan gambar yang menakjubkan.
+                            </p>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="illustration-container">
+                                <!-- Using same asset or styled representation of video playing -->
+                                <div class="position-relative">
+                                    <img src="assets/class_cover.png" alt="Video Tutorial" class="illustration-img rounded-20" style="box-shadow: var(--shadow-md);">
+                                    <div class="video-overlay-play">
+                                        <i class="bi bi-play-fill text-white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="slide-title">Video Tutorial Interaktif</h2>
+                            <p class="slide-desc">
+                                Tonton materi fotografi terstruktur dari mentor profesional dengan penjelasan visual yang mudah dipahami.
+                            </p>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="carousel-item">
+                            <div class="illustration-container">
+                                <img src="assets/landscape_challenge_sample.png" alt="Latihan & Tantangan" class="illustration-img rounded-20" style="box-shadow: var(--shadow-md); transform: rotate(-2deg); max-height: 200px;">
+                            </div>
+                            <h2 class="slide-title">Latihan dan Tantangan</h2>
+                            <p class="slide-desc">
+                                Asah kemampuan fotografimu melalui kuis teori interaktif dan tantangan foto langsung di lapangan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Navigation Buttons -->
+                <div class="action-footer mt-4">
+                    <div id="prevSlideWrapper" style="visibility: hidden;">
+                        <button type="button" class="btn btn-light rounded-circle" id="prevBtn" style="width: 50px; height: 50px;">
+                            <i class="bi bi-chevron-left text-dark-text"></i>
+                        </button>
+                    </div>
+                    
+                    <button type="button" class="btn-gradient w-50 py-3 d-none" id="startBtn" onclick="window.location.href='login.html'">
+                        Mulai <i class="bi bi-arrow-right-short ms-1"></i>
+                    </button>
+                    
+                    <button type="button" class="btn-gradient rounded-circle d-flex align-items-center justify-content-center" id="nextBtn" style="width: 55px; height: 55px;">
+                        <i class="bi bi-chevron-right text-white fs-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const carousel = new bootstrap.Carousel(document.getElementById('onboardingCarousel'), {
+            touch: true
+        });
+
+        const skipLink = document.getElementById('skipLink');
+        const prevBtn = document.getElementById('prevBtn');
+        const prevSlideWrapper = document.getElementById('prevSlideWrapper');
+        const nextBtn = document.getElementById('nextBtn');
+        const startBtn = document.getElementById('startBtn');
+        const myCarousel = document.getElementById('onboardingCarousel');
+
+        myCarousel.addEventListener('slide.bs.carousel', function (e) {
+            const index = e.to;
+            
+            // Toggle Previous Button
+            if (index === 0) {
+                prevSlideWrapper.style.visibility = 'hidden';
+            } else {
+                prevSlideWrapper.style.visibility = 'visible';
+            }
+
+            // Adjust buttons on the last slide
+            if (index === 2) {
+                skipLink.classList.add('d-none');
+                nextBtn.classList.add('d-none');
+                startBtn.classList.remove('d-none');
+            } else {
+                skipLink.classList.remove('d-none');
+                nextBtn.classList.remove('d-none');
+                startBtn.classList.add('d-none');
+            }
+        });
+
+        // Button clicks
+        nextBtn.addEventListener('click', () => carousel.next());
+        prevBtn.addEventListener('click', () => carousel.prev());
+    </script>
+</body>
+</html>
